@@ -7,9 +7,9 @@ Script is still work in progress but what i've see so far testing on different s
 
 The underlying part in the code filters out the Defender Antivirus updates, otherwise the last patch update would be always compliants since this updates multiple times per day.
 
-`
+```powershell
 #Filter Out results with Regex
 $Result = $history | Sort-Object Date -desc |
   Select-Object -Property Date,KB,@{l='Category';e={[string]$_.Categories[0].Name}},Title,Result `
 | Where-Object {$_.Title -notmatch "Security Intelligence Update for Microsoft Defender Antivirus \d*"}
-`
+```
